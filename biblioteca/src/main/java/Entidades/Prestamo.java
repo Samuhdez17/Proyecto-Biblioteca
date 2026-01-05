@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -29,6 +30,18 @@ public class Prestamo {
 
     @Column(name = "fechaDevolucion")
     private LocalDate fechaDevolucion;
+
+    private LocalDate fechaLimite;
+
+    public Prestamo() {
+    }
+
+    public Prestamo(Usuario usuario, Ejemplar ejemplar, LocalDate fechaInicio) {
+        setUsuario(usuario);
+        setEjemplar(ejemplar);
+        setFechaInicio(fechaInicio);
+        setFechaLimite(fechaInicio);
+    }
 
     public Integer getId() {
         return id;
@@ -70,4 +83,11 @@ public class Prestamo {
         this.fechaDevolucion = fechaDevolucion;
     }
 
+    public LocalDate getFechaLimite() {
+        return fechaLimite;
+    }
+
+    public void setFechaLimite(LocalDate fechaInicio) {
+        this.fechaLimite = fechaInicio.plusDays(15);
+    }
 }

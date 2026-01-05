@@ -5,7 +5,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
+import org.hibernate.graph.internal.RootGraphImpl;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Scanner;
 
 public class App {
@@ -49,6 +52,7 @@ public class App {
     public static void main( String[] args ) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("proyc_biblioteca");
         EntityManager em = emf.createEntityManager();
+        boolean admin = false;
 
         int opcion = -1;
 
@@ -176,10 +180,50 @@ public class App {
 
                         switch (opcion) {
                             case 1 -> {
+                                System.out.print("Indica dni del usuario: ");
+                                String dni = entrada.next();
+                                System.out.println();
 
+                                Query prestamosDeUsuario = em.createQuery("SELECT COUNT(prestamo.usuario) FROM Prestamo prestamo WHERE prestamo.usuario.dni = :dni");
+                                prestamosDeUsuario.setParameter("dni", dni);
+
+                                Long prestamos = (Long) prestamosDeUsuario.getSingleResult();
+                                if (prestamos >= 3) {
+                                    System.out.println("El usuario ya tiene 3 libros prestados, no se pueden prestar mas libros.");
+                                    continue;
+                                }
+
+                                if (em.find(Usuario.class, dni).getPenalizacionHasta() != null) {
+                                    System.out.println("El usuario tiene una penalización hasta: " + em.find(Usuario.class, dni).getPenalizacionHasta());
+                                    continue;
+                                }
+
+                                System.out.println("Indica ISBN: ");
+                                String isbn = entrada.next();
+                                System.out.println();
+
+                                Ejemplar ejemplar = new Ejemplar(em.find(Libro.class, isbn));
+                                if (ejemplar.getEstado().equals("Prestado")) {
+                                    System.out.println("El ejemplar ya esta prestado.");
+                                    continue;
+                                }
+
+                                Prestamo p = new Prestamo(new Usuario(dni), ejemplar, LocalDate.now());
+                                em.getTransaction().begin();
+                                em.persist(p);
+                                ejemplar.setEstado("Prestado");
+                                em.getTransaction().commit();
                             }
 
                             case 2 -> {
+                                System.out.print("Indica dni del usuario: ");
+                                String dni = entrada.next();
+                                System.out.println();
+
+                                System.out.println("Indica el isbn del libro a devolver: ");
+                                String isbn = entrada.next();
+                                System.out.println();
+
 
                             }
 

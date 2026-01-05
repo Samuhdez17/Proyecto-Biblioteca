@@ -21,6 +21,10 @@ public class Ejemplar {
     public Ejemplar() {
     }
 
+    public Ejemplar(Libro isbn) {
+        setIsbn(isbn);
+    }
+
     public Ejemplar(Libro isbn, String estado) {
         setIsbn(isbn);
         setEstado(estado);
