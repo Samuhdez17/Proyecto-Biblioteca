@@ -83,7 +83,7 @@ public class App {
                                 String autor = entrada.next();
                                 System.out.println();
 
-                                Libro libro = new Libro(isbn, titulo, autor); // Poner un try para verificar que se ha generado correctamente el isbn10 -> 13
+                                Libro libro = new Libro(isbn, titulo, autor);
 
                                 em.getTransaction().begin();
                                 em.persist(libro);
