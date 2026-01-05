@@ -31,6 +31,17 @@ public class Usuario {
     @Column(name = "penalizacionHasta")
     private LocalDate penalizacionHasta;
 
+    public Usuario() {
+    }
+
+    public Usuario(String dni, String nombre, String email, String password, String tipo) {
+        setDni(dni);
+        setNombre(nombre);
+        setEmail(email);
+        setPassword(password);
+        setTipo(tipo);
+    }
+
     public Integer getId() {
         return id;
     }

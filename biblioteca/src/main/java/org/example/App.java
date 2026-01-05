@@ -4,6 +4,7 @@ import Entidades.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 
 import java.util.Scanner;
 
@@ -35,7 +36,6 @@ public class App {
     private static final String MENU_USUARIOS = """
             MENU USUARIOS
     1. Registrar usuario
-    2. Ver usuarios
     0. Salir al menu principal
     """;
 
@@ -65,15 +65,8 @@ public class App {
                         switch (opcion) {
                             case 1 -> {
                                 System.out.print("Indica el ISBN (sin guiones): ");
-                                String isbn = entrada.next();
+                                String isbn = verificarISBN();
                                 System.out.println();
-
-                                while (isbn.length() != 13 && isbn.length() != 10) {
-                                    System.out.println("Formato de código invalido. ");
-                                    System.out.print("Indica el ISBN (sin guiones): ");
-                                    isbn = entrada.next();
-                                    System.out.println();
-                                }
 
                                 System.out.print("Indica el título");
                                 String titulo = entrada.next();
@@ -104,11 +97,28 @@ public class App {
 
                         switch (opcion) {
                             case 1 -> {
+                                System.out.print("Indica el ISBN (sin guiones): ");
+                                String isbn = verificarISBN();
+                                System.out.println();
 
+                                System.out.print("Indica el estado del ejemplar (Disponible; Prestado; Dañado): ");
+                                String estado = entrada.next();
+
+                                System.out.println();
+
+                                Ejemplar ejemplar = new Ejemplar(new Libro(isbn), estado);
+
+                                em.getTransaction().begin();
+                                em.persist(ejemplar);
+                                em.getTransaction().commit();
                             }
 
                             case 2 -> {
+                                Query q = em.createQuery("SELECT COUNT(ej) FROM Ejemplar ej WHERE ej.estado = 'Disponible'");
 
+                                Long stock = (Long) q.getSingleResult();
+
+                                System.out.println(stock);
                             }
 
                             case 0 -> System.out.println("Saliendo al menu principal ...");
@@ -125,11 +135,31 @@ public class App {
 
                         switch (opcion) {
                             case 1 -> {
+                                System.out.print("Indica el DNI: ");
+                                String dni = entrada.next();
+                                System.out.println();
 
-                            }
+                                System.out.print("Indica el nombre: ");
+                                String nombre = entrada.next();
+                                System.out.println();
 
-                            case 2 -> {
+                                System.out.print("Indica el email: ");
+                                String email = entrada.next();
+                                System.out.println();
 
+                                System.out.print("Indica contrasenia: ");
+                                String contrasenia = entrada.next();
+                                System.out.println();
+
+                                System.out.println("Indica el tipo de usuario: ");
+                                String tipo = entrada.next();
+                                System.out.println();
+
+                                Usuario usuario = new Usuario(dni, nombre, email, contrasenia, tipo);
+
+                                em.getTransaction().begin();
+                                em.persist(usuario);
+                                em.getTransaction().commit();
                             }
 
                             case 0 -> System.out.println("Saliendo al menu principal ...");
@@ -156,6 +186,8 @@ public class App {
                             case 0 -> System.out.println("Saliendo al menu principal ...");
                         }
                     }
+
+                    opcion = -1;
                 }
 
                 case 5 -> {
@@ -166,5 +198,18 @@ public class App {
             }
 
         }
+    }
+
+    private static String verificarISBN() {
+        String isbn = entrada.next();
+
+        while (isbn.length() != 13 && isbn.length() != 10) {
+            System.out.println("Formato de código invalido. ");
+            System.out.print("Indica el ISBN (sin guiones): ");
+            isbn = entrada.next();
+            System.out.println();
+        }
+
+        return isbn;
     }
 }

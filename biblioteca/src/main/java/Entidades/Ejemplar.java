@@ -18,6 +18,14 @@ public class Ejemplar {
     @JoinColumn(name = "isbn", nullable = false)
     private Libro isbn;
 
+    public Ejemplar() {
+    }
+
+    public Ejemplar(Libro isbn, String estado) {
+        setIsbn(isbn);
+        setEstado(estado);
+    }
+
     @ColumnDefault("'Disponible'")
     @Lob
     @Column(name = "estado")
@@ -46,5 +54,4 @@ public class Ejemplar {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-
 }
