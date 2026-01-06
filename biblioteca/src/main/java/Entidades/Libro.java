@@ -21,10 +21,6 @@ public class Libro {
     public Libro() {
     }
 
-    public Libro(String isbn) {
-        setIsbn(isbn);
-    }
-
     public Libro(String isbn, String titulo, String autor) {
         setIsbn(isbn);
         setTitulo(titulo);

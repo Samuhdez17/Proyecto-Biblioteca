@@ -9,6 +9,7 @@ import org.hibernate.graph.internal.RootGraphImpl;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -54,6 +55,33 @@ public class App {
         EntityManager em = emf.createEntityManager();
         boolean admin = false;
 
+        System.out.print("Correo: ");
+        String correo = entrada.next();
+        System.out.println();
+
+        System.out.print("Contraseña: ");
+        String password = entrada.next();
+        System.out.println();
+
+        Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email");
+        q.setParameter("email", correo);
+
+        try {
+            Usuario usuario = (Usuario) q.getSingleResult();
+            if (usuario.getPassword().equals(password)) {
+                if (usuario.getTipo().equals("Administrador")) {
+                    admin = true;
+                }
+                System.out.println("Bienvenido, " + usuario.getNombre());
+            } else {
+                System.out.println("Correo o contraseña incorrectos.");
+                return;
+            }
+        } catch (Exception e) {
+            System.out.println("Correo o contraseña incorrectos.");
+            return;
+        }
+
         int opcion = -1;
 
         while (opcion != 0) {
@@ -67,25 +95,7 @@ public class App {
                         opcion = entrada.nextInt();
 
                         switch (opcion) {
-                            case 1 -> {
-                                System.out.print("Indica el ISBN (sin guiones): ");
-                                String isbn = verificarISBN();
-                                System.out.println();
-
-                                System.out.print("Indica el título");
-                                String titulo = entrada.next();
-                                System.out.println();
-
-                                System.out.print("Indica el autor");
-                                String autor = entrada.next();
-                                System.out.println();
-
-                                Libro libro = new Libro(isbn, titulo, autor);
-
-                                em.getTransaction().begin();
-                                em.persist(libro);
-                                em.getTransaction().commit();
-                            }
+                            case 1 -> registrarLibro(em);
 
                             case 0 -> System.out.println("Saliendo al menu principal ...");
                         }
@@ -100,30 +110,9 @@ public class App {
                         opcion = entrada.nextInt();
 
                         switch (opcion) {
-                            case 1 -> {
-                                System.out.print("Indica el ISBN (sin guiones): ");
-                                String isbn = verificarISBN();
-                                System.out.println();
+                            case 1 -> registrarEjemplar(em);
 
-                                System.out.print("Indica el estado del ejemplar (Disponible; Prestado; Dañado): ");
-                                String estado = entrada.next();
-
-                                System.out.println();
-
-                                Ejemplar ejemplar = new Ejemplar(new Libro(isbn), estado);
-
-                                em.getTransaction().begin();
-                                em.persist(ejemplar);
-                                em.getTransaction().commit();
-                            }
-
-                            case 2 -> {
-                                Query q = em.createQuery("SELECT COUNT(ej) FROM Ejemplar ej WHERE ej.estado = 'Disponible'");
-
-                                Long stock = (Long) q.getSingleResult();
-
-                                System.out.println(stock);
-                            }
+                            case 2 -> verStock(em);
 
                             case 0 -> System.out.println("Saliendo al menu principal ...");
                         }
@@ -138,33 +127,7 @@ public class App {
                         opcion = entrada.nextInt();
 
                         switch (opcion) {
-                            case 1 -> {
-                                System.out.print("Indica el DNI: ");
-                                String dni = entrada.next();
-                                System.out.println();
-
-                                System.out.print("Indica el nombre: ");
-                                String nombre = entrada.next();
-                                System.out.println();
-
-                                System.out.print("Indica el email: ");
-                                String email = entrada.next();
-                                System.out.println();
-
-                                System.out.print("Indica contrasenia: ");
-                                String contrasenia = entrada.next();
-                                System.out.println();
-
-                                System.out.println("Indica el tipo de usuario: ");
-                                String tipo = entrada.next();
-                                System.out.println();
-
-                                Usuario usuario = new Usuario(dni, nombre, email, contrasenia, tipo);
-
-                                em.getTransaction().begin();
-                                em.persist(usuario);
-                                em.getTransaction().commit();
-                            }
+                            case 1 -> registrarUsuario(em);
 
                             case 0 -> System.out.println("Saliendo al menu principal ...");
                         }
@@ -179,53 +142,9 @@ public class App {
                         opcion = entrada.nextInt();
 
                         switch (opcion) {
-                            case 1 -> {
-                                System.out.print("Indica dni del usuario: ");
-                                String dni = entrada.next();
-                                System.out.println();
+                            case 1 -> prestarLibro(em);
 
-                                Query prestamosDeUsuario = em.createQuery("SELECT COUNT(prestamo.usuario) FROM Prestamo prestamo WHERE prestamo.usuario.dni = :dni");
-                                prestamosDeUsuario.setParameter("dni", dni);
-
-                                Long prestamos = (Long) prestamosDeUsuario.getSingleResult();
-                                if (prestamos >= 3) {
-                                    System.out.println("El usuario ya tiene 3 libros prestados, no se pueden prestar mas libros.");
-                                    continue;
-                                }
-
-                                if (em.find(Usuario.class, dni).getPenalizacionHasta() != null) {
-                                    System.out.println("El usuario tiene una penalización hasta: " + em.find(Usuario.class, dni).getPenalizacionHasta());
-                                    continue;
-                                }
-
-                                System.out.println("Indica ISBN: ");
-                                String isbn = entrada.next();
-                                System.out.println();
-
-                                Ejemplar ejemplar = new Ejemplar(em.find(Libro.class, isbn));
-                                if (ejemplar.getEstado().equals("Prestado")) {
-                                    System.out.println("El ejemplar ya esta prestado.");
-                                    continue;
-                                }
-
-                                Prestamo p = new Prestamo(new Usuario(dni), ejemplar, LocalDate.now());
-                                em.getTransaction().begin();
-                                em.persist(p);
-                                ejemplar.setEstado("Prestado");
-                                em.getTransaction().commit();
-                            }
-
-                            case 2 -> {
-                                System.out.print("Indica dni del usuario: ");
-                                String dni = entrada.next();
-                                System.out.println();
-
-                                System.out.println("Indica el isbn del libro a devolver: ");
-                                String isbn = entrada.next();
-                                System.out.println();
-
-
-                            }
+                            case 2 -> devolverLibro(em);
 
                             case 0 -> System.out.println("Saliendo al menu principal ...");
                         }
@@ -234,14 +153,224 @@ public class App {
                     opcion = -1;
                 }
 
-                case 5 -> {
-
-                }
+                case 5 -> verInfo(admin, em, correo);
 
                 case 0 -> System.out.println("Saliendo ...");
             }
 
+            em.close();
+            emf.close();
         }
+    }
+
+    private static void verInfo(boolean admin, EntityManager em, String correo) {
+        List<Object[]> prestamos;
+        Query query;
+
+        if (admin) {
+            query = em.createQuery("SELECT prestamo FROM Prestamo prestamo");
+
+        } else {
+            query = em.createQuery(
+                    "SELECT prestamo FROM Prestamo prestamo " +
+                    "WHERE prestamo.usuario.email = :email"
+            );
+            query.setParameter("email", correo);
+        }
+
+        prestamos = query.getResultList();
+
+        for (Object[] prestamo : prestamos) {
+            for (Object dato : prestamo) {
+                System.out.printf(dato + " | ");
+            }
+
+            System.out.println("\n");
+        }
+    }
+
+    private static void devolverLibro(EntityManager em) {
+        System.out.print("Indica dni del usuario: ");
+        String dni = entrada.next();
+        System.out.println();
+        Usuario usuario = em.find(Usuario.class, dni);
+        if (usuario == null) {
+            System.out.println("El usuario no existe.");
+            return;
+        }
+
+        System.out.println("Indica el isbn del libro a devolver: ");
+        String isbn = entrada.next();
+        System.out.println();
+
+        Query query = em.createQuery(
+                "SELECT p.ejemplar FROM Prestamo p " +
+                "WHERE p.ejemplar.isbn.isbn = :isbn " +
+                "AND p.usuario.id = :usuario " +
+                "AND p.fechaDevolucion IS NULL"
+        );
+        query.setParameter("isbn", isbn);
+        query.setParameter("usuario", usuario.getId());
+
+        Ejemplar ejemplar = (Ejemplar) query.getSingleResult();
+
+        if (ejemplar.getEstado().equals("Disponible")) {
+            System.out.println("El ejemplar no esta prestado.");
+        } else if (ejemplar.getEstado().equals("Prestado")) {
+            Prestamo prestamo = em.find(Prestamo.class, usuario.getDni());
+
+            if (
+                    prestamo.getFechaLimite() != null &&
+                    prestamo.getFechaLimite().isBefore(LocalDate.now())
+            ) {
+                System.out.println("Este libro es entregado con retraso, se pondrá una amonestación de 15 días.");
+                em.getTransaction().begin();
+                usuario.setPenalizacionHasta(LocalDate.now().plusDays(15));
+                em.getTransaction().commit();
+            }
+
+            em.getTransaction().begin();
+            prestamo.setFechaDevolucion(LocalDate.now());
+            ejemplar.setEstado("Disponible");
+            em.getTransaction().commit();
+        }
+    }
+
+    private static void prestarLibro(EntityManager em) {
+        System.out.print("Indica dni del usuario: ");
+        String dni = entrada.next();
+        System.out.println();
+
+        Query prestamosDeUsuario = em.createQuery(
+                "SELECT COUNT(prestamo.usuario) FROM Prestamo prestamo" +
+                " WHERE prestamo.usuario.dni = :dni"
+        );
+        prestamosDeUsuario.setParameter("dni", dni);
+
+        Long prestamos = (Long) prestamosDeUsuario.getSingleResult();
+        if (prestamos >= 3) {
+            System.out.println("El usuario ya tiene 3 libros prestados, no se pueden prestar mas libros.");
+            return;
+        }
+
+        if (
+                em.find(Usuario.class, dni).getPenalizacionHasta() != null &&
+                em.find(Usuario.class, dni).getPenalizacionHasta().isAfter(LocalDate.now())
+        ) {
+            System.out.println("El usuario tiene una penalización hasta: " + em.find(Usuario.class, dni).getPenalizacionHasta());
+            return;
+        }
+
+        System.out.println("Indica ISBN: ");
+        String isbn = entrada.next();
+        System.out.println();
+
+        Query ejemplarDisponible = em.createQuery(
+                "SELECT e FROM Ejemplar e " +
+                "WHERE e.isbn.isbn = :isbn " +
+                "AND e.estado = 'Disponible'"
+        );
+        ejemplarDisponible.setParameter("isbn", isbn);
+
+        Ejemplar ejemplar = (Ejemplar) ejemplarDisponible.getSingleResult();
+
+        if (ejemplar == null) {
+            System.out.println("El ejemplar no existe o no esta disponible.");
+            return;
+        }
+
+        Prestamo p = new Prestamo(em.find(Usuario.class, dni), ejemplar, LocalDate.now());
+        em.getTransaction().begin();
+        em.persist(p);
+        ejemplar.setEstado("Prestado");
+        em.getTransaction().commit();
+    }
+
+    private static void registrarUsuario(EntityManager em) {
+        System.out.print("Indica el DNI: ");
+        String dni = entrada.next();
+        System.out.println();
+
+        System.out.print("Indica el nombre: ");
+        String nombre = entrada.next();
+        System.out.println();
+
+        System.out.print("Indica el email: ");
+        String email = entrada.next();
+        System.out.println();
+
+        System.out.print("Indica contrasenia: ");
+        String contrasenia = entrada.next();
+        System.out.println();
+
+        System.out.println("Indica el tipo de usuario: ");
+        String tipo = entrada.next();
+        System.out.println();
+
+        Usuario usuario = new Usuario(dni, nombre, email, contrasenia, tipo);
+
+        em.getTransaction().begin();
+        em.persist(usuario);
+        em.getTransaction().commit();
+    }
+
+    private static void verStock(EntityManager em) {
+        System.out.print("Indica el isbn del libro a buscar: ");
+        String isbn = verificarISBN();
+        System.out.println();
+
+        Query query = em.createQuery(
+                "SELECT COUNT(ej.estado) FROM Ejemplar ej " +
+                "WHERE ej.isbn.isbn = :isbn " +
+                "AND ej.estado = 'Disponible'"
+        );
+        query.setParameter("isbn", isbn);
+
+        Long stock = (Long) query.getSingleResult();
+
+        System.out.println(stock);
+    }
+
+    private static void registrarEjemplar(EntityManager em) {
+        System.out.print("Indica el ISBN (sin guiones): ");
+        String isbn = verificarISBN();
+        System.out.println();
+
+        System.out.print("Indica el estado del ejemplar (Disponible; Prestado; Dañado): ");
+        String estado = entrada.next();
+
+        System.out.println();
+
+        Libro libro = em.find(Libro.class, isbn);
+        if (libro == null) {
+            System.out.println("El libro no existe.");
+            return;
+        }
+        Ejemplar ejemplar = new Ejemplar(libro, estado);
+
+        em.getTransaction().begin();
+        em.persist(ejemplar);
+        em.getTransaction().commit();
+    }
+
+    private static void registrarLibro(EntityManager em) {
+        System.out.print("Indica el ISBN (sin guiones): ");
+        String isbn = verificarISBN();
+        System.out.println();
+
+        System.out.print("Indica el título");
+        String titulo = entrada.nextLine();
+        System.out.println();
+
+        System.out.print("Indica el autor");
+        String autor = entrada.next();
+        System.out.println();
+
+        Libro libro = new Libro(isbn, titulo, autor);
+
+        em.getTransaction().begin();
+        em.persist(libro);
+        em.getTransaction().commit();
     }
 
     private static String verificarISBN() {

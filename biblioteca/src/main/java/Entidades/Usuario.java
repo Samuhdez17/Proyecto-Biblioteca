@@ -34,10 +34,6 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String dni) {
-        setDni(dni);
-    }
-
     public Usuario(String dni, String nombre, String email, String password, String tipo) {
         setDni(dni);
         setNombre(nombre);
