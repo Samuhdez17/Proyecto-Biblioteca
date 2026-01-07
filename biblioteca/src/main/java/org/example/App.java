@@ -158,13 +158,14 @@ public class App {
                 case 0 -> System.out.println("Saliendo ...");
             }
 
-            em.close();
-            emf.close();
         }
+
+        em.close();
+        emf.close();
     }
 
     private static void verInfo(boolean admin, EntityManager em, String correo) {
-        List<Object[]> prestamos;
+        List<Prestamo> prestamos;
         Query query;
 
         if (admin) {
@@ -180,12 +181,13 @@ public class App {
 
         prestamos = query.getResultList();
 
-        for (Object[] prestamo : prestamos) {
-            for (Object dato : prestamo) {
-                System.out.printf(dato + " | ");
-            }
-
-            System.out.println("\n");
+        for (Prestamo p : prestamos) {
+            System.out.println(
+                    p.getUsuario().getNombre() + " | " +
+                    p.getEjemplar().getIsbn().getTitulo() + " | " +
+                    p.getFechaInicio() + " | " +
+                    p.getFechaDevolucion()
+            );
         }
     }
 
@@ -242,8 +244,9 @@ public class App {
         System.out.println();
 
         Query prestamosDeUsuario = em.createQuery(
-                "SELECT COUNT(prestamo.usuario) FROM Prestamo prestamo" +
-                " WHERE prestamo.usuario.dni = :dni"
+                "SELECT COUNT(prestamo) FROM Prestamo prestamo" +
+                " WHERE prestamo.usuario.dni = :dni " +
+                "AND prestamo.fechaDevolucion IS NULL"
         );
         prestamosDeUsuario.setParameter("dni", dni);
 
@@ -359,6 +362,7 @@ public class App {
         System.out.println();
 
         System.out.print("Indica el título");
+        entrada.nextLine();
         String titulo = entrada.nextLine();
         System.out.println();
 
