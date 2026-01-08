@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48c5d283-3188-46d3-ab06-f7a17f074666" name="Changes" comment="se esta termiando el menu de prestamos">
-      <change afterPath="$PROJECT_DIR$/../interfaz/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interfaz/.idea/jpa.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interfaz/src/main/java/Entidades/Ejemplar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interfaz/src/main/java/Entidades/Libro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interfaz/src/main/java/Entidades/Prestamo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interfaz/src/main/java/Entidades/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interfaz/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entidades/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entidades/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interfaz/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interfaz/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interfaz/src/main/resources/com/example/interfaz/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/src/main/resources/com/example/interfaz/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interfaz/src/main/resources/com/example/interfaz/menu-principal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/src/main/resources/com/example/interfaz/menu-principal.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="48c5d283-3188-46d3-ab06-f7a17f074666" name="Changes" comment="Se termina el codigo (supuestamente funcional, no he comprobado) se pasa a la interfaz" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,12 +19,12 @@
     &quot;assignee&quot;: &quot;Samuhdez17&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Samuhdez17/Proyecto-Biblioteca.git",
-    "accountId": "98cf7ad5-aadf-4948-9136-0775850b1587"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Samuhdez17/Proyecto-Biblioteca.git&quot;,
+    &quot;accountId&quot;: &quot;98cf7ad5-aadf-4948-9136-0775850b1587&quot;
   }
-}]]></component>
+}</component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -118,6 +102,7 @@
       <workItem from="1767803987452" duration="1609000" />
       <workItem from="1767820571797" duration="4157000" />
       <workItem from="1767868783303" duration="7078000" />
+      <workItem from="1767875895183" duration="86000" />
     </task>
     <task id="LOCAL-00001" summary="se hace el registro de libros">
       <option name="closed" value="true" />
@@ -151,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767643969586</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Se termina el codigo (supuestamente funcional, no he comprobado) se pasa a la interfaz">
+      <option name="closed" value="true" />
+      <created>1767875941671</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1767875941672</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +154,7 @@
     <MESSAGE value="se hace el registro de libros" />
     <MESSAGE value="se hace hasta el menu de prestamos" />
     <MESSAGE value="se esta termiando el menu de prestamos" />
-    <option name="LAST_COMMIT_MESSAGE" value="se esta termiando el menu de prestamos" />
+    <MESSAGE value="Se termina el codigo (supuestamente funcional, no he comprobado) se pasa a la interfaz" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se termina el codigo (supuestamente funcional, no he comprobado) se pasa a la interfaz" />
   </component>
 </project>
