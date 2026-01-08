@@ -1,4 +1,4 @@
-package com.example.interfaz;
+package com.example.interfaz.controladores;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

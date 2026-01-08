@@ -94,7 +94,8 @@ public class Usuario {
         return penalizacionHasta;
     }
 
-    public void setPenalizacionHasta(LocalDate fechaBase) {
-        this.penalizacionHasta = fechaBase.plusDays(15);
+    public void setPenalizacionHasta(LocalDate penalizacionHasta) {
+        this.penalizacionHasta = penalizacionHasta;
     }
+
 }
