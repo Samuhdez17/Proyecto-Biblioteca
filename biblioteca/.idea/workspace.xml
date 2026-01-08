@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="48c5d283-3188-46d3-ab06-f7a17f074666" name="Changes" comment="" />
+=======
+    <list default="true" id="48c5d283-3188-46d3-ab06-f7a17f074666" name="Changes" comment="se esta termiando el menu de prestamos">
+      <change afterPath="$PROJECT_DIR$/../interfaz/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../interfaz/.idea/PMDPlugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../interfaz/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../interfaz/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../interfaz/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+    </list>
+>>>>>>> af01b35eb529da836d059ff76105028adb952eae
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,11 +107,55 @@
       <workItem from="1766691721651" duration="814000" />
       <workItem from="1766693633972" duration="4192000" />
       <workItem from="1767443809108" duration="5324000" />
-      <workItem from="1767609812213" duration="144000" />
+      <workItem from="1767609812213" duration="8867000" />
+      <workItem from="1767636812520" duration="7160000" />
+      <workItem from="1767716745633" duration="7859000" />
+      <workItem from="1767731275287" duration="1605000" />
+      <workItem from="1767803987452" duration="1609000" />
+      <workItem from="1767820571797" duration="4157000" />
     </task>
+    <task id="LOCAL-00001" summary="se hace el registro de libros">
+      <option name="closed" value="true" />
+      <created>1767609991971</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1767609991971</updated>
+    </task>
+    <task id="LOCAL-00002" summary="se hace el registro de libros">
+      <option name="closed" value="true" />
+      <created>1767610603981</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1767610603981</updated>
+    </task>
+    <task id="LOCAL-00003" summary="se hace hasta el menu de prestamos">
+      <option name="closed" value="true" />
+      <created>1767618768257</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1767618768257</updated>
+    </task>
+    <task id="LOCAL-00004" summary="se esta termiando el menu de prestamos">
+      <option name="closed" value="true" />
+      <created>1767643969586</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1767643969586</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="se hace el registro de libros" />
+    <MESSAGE value="se hace hasta el menu de prestamos" />
+    <MESSAGE value="se esta termiando el menu de prestamos" />
+    <option name="LAST_COMMIT_MESSAGE" value="se esta termiando el menu de prestamos" />
   </component>
 </project>

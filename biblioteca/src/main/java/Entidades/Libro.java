@@ -22,12 +22,9 @@ public class Libro {
     }
 
     public Libro(String isbn, String titulo, String autor) {
-        if (isbn.length() == 10)
-            isbn10A13(isbn);
-        else
-            this.isbn = isbn;
-        this.titulo = titulo;
-        this.autor = autor;
+        setIsbn(isbn);
+        setTitulo(titulo);
+        setAutor(autor);
     }
 
     public String getIsbn() {
@@ -35,7 +32,10 @@ public class Libro {
     }
 
     public void setIsbn(String isbn) {
-        this.isbn = isbn;
+        if (isbn.length() == 10)
+            isbn10A13(isbn);
+        else
+            this.isbn = isbn;
     }
 
     public String getTitulo() {
@@ -66,7 +66,7 @@ public class Libro {
         }
 
         int numControl = (10 - (sumaTotal % 10)) % 10;
-        this.isbn = isbn + numControl;
+        this.isbn = baseIsbn13 + numControl;
     }
 
 }
