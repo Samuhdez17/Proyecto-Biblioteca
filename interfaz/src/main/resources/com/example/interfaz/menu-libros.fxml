@@ -8,14 +8,23 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interfaz.controladores.menus.MenuLibros">
    <children>
-      <Label layoutX="237.0" layoutY="41.0" text="MENÚ LIBROS">
+      <Label layoutX="237.0" layoutY="66.0" text="MENÚ LIBROS">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="61.0" layoutY="71.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="90.0" text="Atrás">
+      <Button fx:id="btAtras" layoutX="31.0" layoutY="59.0" mnemonicParsing="false" onAction="#irMenuPrincipal" prefHeight="14.0" prefWidth="86.0" text="Atrás">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btRegistrarLibro" layoutX="190.0" layoutY="173.0" mnemonicParsing="false" onAction="#registrarLibro" prefHeight="110.0" prefWidth="214.0" text="Registrar Libro">
          <graphic>
             <ImageView fitHeight="36.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                <viewport>

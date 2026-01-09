@@ -9,4 +9,6 @@ module com.example.interfaz {
     exports com.example.interfaz;
     exports com.example.interfaz.controladores;
     opens com.example.interfaz.controladores to javafx.fxml;
+    exports com.example.interfaz.controladores.menus;
+    opens com.example.interfaz.controladores.menus to javafx.fxml;
 }

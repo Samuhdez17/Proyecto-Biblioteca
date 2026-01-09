@@ -64,7 +64,7 @@ public class App {
         try {
             Usuario usuario = (Usuario) buscarUsuario.getSingleResult();
             if (usuario.getPassword().equals(password)) {
-                if (usuario.getTipo().equals("Administrador")) {
+                if (usuario.getTipo().equalsIgnoreCase("Administrador")) {
                     admin = true;
                 }
                 System.out.println("Bienvenido, " + usuario.getNombre());
