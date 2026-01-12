@@ -46,7 +46,7 @@ public class App {
     """;
 
     public static void main( String[] args ) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("biblioteca");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("proyc_biblioteca");
         EntityManager em = emf.createEntityManager();
         boolean admin = false;
 
@@ -303,10 +303,10 @@ public class App {
         System.out.println();
 
         System.out.print("Indica el email: ");
-        String email = entrada.next();
+        String email = verificarEmail();
         System.out.println();
 
-        System.out.print("Indica contrasenia: ");
+        System.out.print("Indica la contrasenia: ");
         String contrasenia = entrada.next();
         System.out.println();
 
@@ -321,8 +321,23 @@ public class App {
         em.getTransaction().commit();
     }
 
+    private static String verificarEmail() {
+        String email = entrada.next();
+        System.out.println();
+
+        while (!email.contains("@")) {
+            System.out.println("Email invalido");
+            System.out.print("Indica el email: ");
+            email = entrada.next();
+            System.out.println();
+        }
+
+        return email;
+    }
+
     private static String verificarDNI() {
         String dni = entrada.next().toUpperCase();
+        System.out.println();
 
         while (dni.length() != 9) {
             System.out.println("DNI invalido. ");
