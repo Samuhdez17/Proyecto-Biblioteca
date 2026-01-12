@@ -46,7 +46,7 @@ public class App {
     """;
 
     public static void main( String[] args ) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("proyc_biblioteca");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("biblioteca");
         EntityManager em = emf.createEntityManager();
         boolean admin = false;
 

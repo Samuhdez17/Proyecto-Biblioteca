@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48c5d283-3188-46d3-ab06-f7a17f074666" name="Changes" comment="Se termina el codigo (supuestamente funcional, no he comprobado) se pasa a la interfaz">
-      <change afterPath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/MenuLibros.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/MenuPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interfaz/src/main/resources/com/example/interfaz/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/src/main/resources/com/example/interfaz/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interfaz/src/main/resources/com/example/interfaz/menu-libros.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/src/main/resources/com/example/interfaz/menu-libros.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interfaz/src/main/resources/com/example/interfaz/menu-principal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/src/main/resources/com/example/interfaz/menu-principal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/menus/MenuPrestamos.java" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/menus/MenuPrestamos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/menus/MenuUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/menus/MenuUsuarios.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +107,8 @@
       <workItem from="1767820571797" duration="4157000" />
       <workItem from="1767868783303" duration="7078000" />
       <workItem from="1767875895183" duration="86000" />
-      <workItem from="1767943144655" duration="1937000" />
+      <workItem from="1767943144655" duration="3467000" />
+      <workItem from="1768209249214" duration="1208000" />
     </task>
     <task id="LOCAL-00001" summary="se hace el registro de libros">
       <option name="closed" value="true" />
