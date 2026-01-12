@@ -46,7 +46,7 @@ public class App {
     """;
 
     public static void main( String[] args ) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("proyc_biblioteca");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("biblioteca");
         EntityManager em = emf.createEntityManager();
         boolean admin = false;
 
@@ -331,7 +331,17 @@ public class App {
             System.out.println();
         }
 
-        if (dni.charAt(dni.length() - 1) )
+        char letraDNI;
+
+        try {
+            letraDNI = dni.charAt(dni.length() - 1);
+
+            if (letraDNI < 65 || letraDNI > 90)
+                throw new Exception();
+
+        } catch (Exception e) {
+            System.out.println("DNI invalido");
+        }
 
         return dni;
     }
