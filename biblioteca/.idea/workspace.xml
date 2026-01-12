@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48c5d283-3188-46d3-ab06-f7a17f074666" name="Changes" comment="Se termina el codigo (supuestamente funcional, no he comprobado) se pasa a la interfaz">
+    <list default="true" id="48c5d283-3188-46d3-ab06-f7a17f074666" name="Changes" comment="cambio de nombre de base de datos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/menus/MenuPrestamos.java" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/menus/MenuPrestamos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/menus/MenuUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/../interfaz/src/main/java/com/example/interfaz/controladores/menus/MenuUsuarios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +108,7 @@
       <workItem from="1767868783303" duration="7078000" />
       <workItem from="1767875895183" duration="86000" />
       <workItem from="1767943144655" duration="3467000" />
-      <workItem from="1768209249214" duration="1208000" />
+      <workItem from="1768209249214" duration="2501000" />
     </task>
     <task id="LOCAL-00001" summary="se hace el registro de libros">
       <option name="closed" value="true" />
@@ -150,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767875941672</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="cambio de nombre de base de datos">
+      <option name="closed" value="true" />
+      <created>1768211432972</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1768211432973</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +169,7 @@
     <MESSAGE value="se hace hasta el menu de prestamos" />
     <MESSAGE value="se esta termiando el menu de prestamos" />
     <MESSAGE value="Se termina el codigo (supuestamente funcional, no he comprobado) se pasa a la interfaz" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se termina el codigo (supuestamente funcional, no he comprobado) se pasa a la interfaz" />
+    <MESSAGE value="cambio de nombre de base de datos" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambio de nombre de base de datos" />
   </component>
 </project>

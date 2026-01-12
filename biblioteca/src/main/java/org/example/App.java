@@ -46,7 +46,7 @@ public class App {
     """;
 
     public static void main( String[] args ) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("biblioteca");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("proyc_biblioteca");
         EntityManager em = emf.createEntityManager();
         boolean admin = false;
 
@@ -295,7 +295,7 @@ public class App {
 
     private static void registrarUsuario(EntityManager em) {
         System.out.print("Indica el DNI: ");
-        String dni = entrada.next();
+        String dni = verificarDNI();
         System.out.println();
 
         System.out.print("Indica el nombre: ");
@@ -319,6 +319,21 @@ public class App {
         em.getTransaction().begin();
         em.persist(usuario);
         em.getTransaction().commit();
+    }
+
+    private static String verificarDNI() {
+        String dni = entrada.next().toUpperCase();
+
+        while (dni.length() != 9) {
+            System.out.println("DNI invalido. ");
+            System.out.print("Indica el DNI: ");
+            dni = entrada.next().toUpperCase();
+            System.out.println();
+        }
+
+        if (dni.charAt(dni.length() - 1) )
+
+        return dni;
     }
 
     private static void verStock(EntityManager em) {
